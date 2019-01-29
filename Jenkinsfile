@@ -28,10 +28,9 @@ stage('ECS Tag Image'){
     powershell "docker tag ${imagename} ${ecrurl}"
     }
 
-stage('ECS Push'){
+stage('ECR Push'){
     docker.withRegistry('https://757113113577.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:ECR-access') {
     powershell "docker push ${ecrurl}"
-//    docker.image("${ecrurl}").push()
    }
     }
 
