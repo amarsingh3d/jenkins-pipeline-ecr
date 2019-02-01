@@ -33,8 +33,8 @@ stage('ECR Push'){
     powershell "docker push ${ecrurl}"
    }
     }
-Stage ('slack notification'){
-    slackSend channel: '#system', message: 'Build Successful ', tokenCredentialId: 'slack-jenkins-token'
+stage('Slack Notification'){
+    slackSend channel: '#system', message: 'Docker ECR Build Successful ', tokenCredentialId: 'slack-jenkins-token'
 
 	 }
 }
