@@ -33,11 +33,8 @@ stage('ECR Push'){
     powershell "docker push ${ecrurl}"
    }
     }
-post {
-        always {
-	    /* Use slackNotifier.groovy from shared library and provide current build result as parameter */   
-            slackNotifier(currentBuild.currentResult)
-            cleanWs()
-        }
-    }
+stage('Slack Notification'){
+    slackSend channel: 'system', message: 'Build Successful ', tokenCredentialId: 'slack-jenkins-token'
+
+	 }
 }
