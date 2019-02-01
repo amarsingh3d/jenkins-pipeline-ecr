@@ -34,7 +34,7 @@ stage('ECR Push'){
    }
     }
 Stage ('slack notification`) {
-    slackSend baseUrl: 'https://ishirinc.slack.com/services/hooks/jenkins-ci/', channel: 'systems', color: 'Green', message: 'Build successfully', tokenCredentialId: 'slack-jenkins-token'
+    sslackSend channel: '#system', message: 'Build Successful ', tokenCredentialId: 'slack-jenkins-token'
 
 	 }
 }
