@@ -33,9 +33,8 @@ stage('ECR Push'){
     powershell "docker push ${ecrurl}"
    }
     }
-Stage (`function slack()`) {
-    curl -X POST -H "Content-Type: application/json" -d "{\"channel\":\"$1\",\"text\":\"$2\"}" ('https://ishirinc.slack.com/services/hooks/jenkins-ci?token=ROroUDF6sx02xCpzKS1ZTeRZ'){
-	slack "#System" "Docker-Machine-Started Successfully!"
-	}
+Stage ('slack notification`) {
+    slackSend baseUrl: 'https://ishirinc.slack.com/services/hooks/jenkins-ci/', channel: 'systems', color: 'Green', message: 'Build successfully', tokenCredentialId: 'slack-jenkins-token'
+
 	 }
 }
