@@ -34,7 +34,7 @@ stage('ECR Push'){
    }
     }
 Stage ('slack notification`) {
-    sslackSend channel: '#system', message: 'Build Successful ', tokenCredentialId: 'slack-jenkins-token'
+    slackSend channel: '#system', message: 'Build Successful ', tokenCredentialId: 'slack-jenkins-token'
 
 	 }
 }
