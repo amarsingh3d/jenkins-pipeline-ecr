@@ -21,11 +21,12 @@ stage ('Runing Container to test built Docker Image'){
     }
     
 stage('Tag Docker Image'){
-    sh label: '', script: "sudo docker tag ${imagename} ${env.dockeruser}/ubuntu:16.04"
+    sh label: '', script: "sudo docker tag ${imagename} ${ecrurl}/ubuntu:16.04"
 
 stage('ECR Push'){
     docker.withRegistry('https://757113113577.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:ECR-Access') {
-    sh label: '', script: "sudo docker push ${ecrurl}"
+	docker.image("${ecrurl}").push
+    //docker.imagesh label: '', script: "sudo docker push ${ecrurl}"
 	}
 	}
 }
