@@ -24,8 +24,8 @@ stage('Tag Docker Image'){
     sh label: '', script: "sudo docker tag ${imagename} ${env.dockeruser}/ubuntu:16.04"
 
 stage('ECR Push'){
-    docker.withRegistry('https://757113113577.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:ECR-access') {
-    powershell "docker push ${ecrurl}"
+    docker.withRegistry('https://757113113577.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:ECR-Access') {
+    sh label: '', script: "sudo docker push ${ecrurl}"
    }
     }
 }
